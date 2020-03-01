@@ -40,7 +40,10 @@ public class PlayerMovement : MonoBehaviour
         m_Animator.SetBool("IsWalking", isWalking);
     }
 
-    void OnAnimatorMove ()
+    // https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnAnimatorMove.html
+    // Callback for processing animation movements for modifying root motion.
+    // This callback will be invoked at each frame after the state machines and the animations have been evaluated, but before OnAnimatorIK.
+        void OnAnimatorMove ()
     {
         m_Rigidbody.MovePosition (m_Rigidbody.position + m_Movement * m_Animator.deltaPosition.magnitude);
         m_Rigidbody.MoveRotation (m_Rotation);
